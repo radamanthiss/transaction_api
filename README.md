@@ -4,15 +4,6 @@
 this project use two approach one for a prod environment that use serverless architecture when we have lambdas, s3, api gateway, ses and dynamodb
 and for local running, we use the library python-lambda-local and a file named event.json that process the lambda but local
 
-# Architecture
-the architecture consists of:
-* S3 bucket: to load csv file
-* Lambda function: process files and updates dynamodb
-* DynamoDB: stores account and transaction tables
-* SES: for send email summaries
-
-![architecture drawio (1)](https://github.com/radamanthiss/transaction_api/assets/22681704/271c4b2b-9bba-491a-85b4-c6935795c9a6)
-
 
 # Requirements
 to run this project successfully we need some initial configurations.
@@ -22,19 +13,6 @@ to run this project successfully we need some initial configurations.
 - An aws account
 
 
-# Environment
-in this project we can use any environment library, like pipenv or similar i use miniconda to setup the environment with this command
-- conda create -n transaction_env python=3.9.18
-then for activate this command
-- conda activate transaction_env
-
-then we can run the command pip install -r requirements.txt to install the package
-
-
-# Description
-this project use two approach one for a prod environment that use serverless architecture when we have lambdas, s3, api gateway, ses and dynamodb
-and for local running, we use the library python-lambda-local and a file named event.json that process the lambda but local
-
 # Architecture
 the architecture consists of:
 * S3 bucket: to load csv file
@@ -43,14 +21,6 @@ the architecture consists of:
 * SES: for send email summaries
 
 ![architecture drawio (1)](https://github.com/radamanthiss/transaction_api/assets/22681704/271c4b2b-9bba-491a-85b4-c6935795c9a6)
-
-
-# Requirements
-to run this project successfully we need some initial configurations.
-- Python 3.9 or above
-- AWS CLI configured with access
-- Terraform
-- An aws account
 
 
 # Environment
