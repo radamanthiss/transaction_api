@@ -71,6 +71,17 @@ this is the stucture of event.json don't change any in the json if you want to t
 }
 ```
 
+## CSV for testing
+the file has this structure
+```
+Id;AccountId;Date;Transaction
+1;1;jul-23;+60.5
+2;1;jul-23;-10.3
+3;1;ago-23;-20.46
+4;1;ago-23;+10.0
+```
+where the column account id is using when we needed recover the email to send the account summary to the email
+
 ## Set environment variables
 you have to create .env file in the project root with the variables
 * AWS_REGION : us-east-1
@@ -111,7 +122,18 @@ The Lambda function should trigger automatically and process the file. In the up
 
 # Testing
 you can run pytest test/ to run the different test for the project
+if require test the api for create account use the link that provide api gateway but is necessary implement the api in api gateway for a successful testing
 
+use this body
+```
+{
+  "id":"1",
+  "email:"email@example.com"
+}
+```
+Test like this
+
+![Captura de pantalla 2024-03-22 a la(s) 5 58 18 p  m](https://github.com/radamanthiss/transaction_api/assets/22681704/2e0728ea-e528-4e2a-b23b-58f24dfc7284)
 
 # Evidence of funcionality AWS
 you can see this video with the funcionality for local and prod 
