@@ -55,6 +55,8 @@ def parse_transactions(csv_content: str) -> List[Dict]:
         date_str = row['Date'].title()  # Convert 'jul' to 'Jul' to match %b expectation
         try:
             date_parsed = datetime.strptime(date_str, '%b-%d')
+            current_year = datetime.now().year
+            date_parsed = date_parsed.replace(year=current_year)
         except ValueError as e:
             print(f"Error parsing date {date_str}: {e}")
             continue
