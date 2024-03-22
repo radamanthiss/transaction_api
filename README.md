@@ -147,8 +147,8 @@ you have to create .env file in the project root with the variables
 Ensure that you have configure aws credentials you can use this command
 - aws configure
 and put the aws credentials like this
-- aws_access_key_id = AKIA6ODUZRWNILSVV6UX
-- aws_secret_access_key = CNaHauFM6LXaoAB0unKrAUqBtbYqj+AfiTA4pkPP
+- aws_access_key_id = "********"
+- aws_secret_access_key = "*********"
 - region=us-east-1
 
 this can change for your aws account crediental that you can configure in this section
