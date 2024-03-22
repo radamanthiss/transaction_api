@@ -1,0 +1,8 @@
+boto3
+botocore
+pylint==2.7.2
+pytest==6.2.2
+python-lambda-local
+pytest-mock
+python-dotenv
+moto

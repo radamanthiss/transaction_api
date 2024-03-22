@@ -1,0 +1,15 @@
+{
+  "running_type": "local",
+  "Records": [
+    {
+      "s3": {
+        "bucket": {
+          "name": "stori-challenge-transaction-bucket"
+        },
+        "object": {
+          "key": "uploads/stori_challenge_123.csv"
+        }
+      }
+    }
+  ]
+}
