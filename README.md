@@ -4,15 +4,6 @@
 this project use two approach one for a prod environment that use serverless architecture when we have lambdas, s3, api gateway, ses and dynamodb
 and for local running, we use the library python-lambda-local and a file named event.json that process the lambda but local
 
-# Architecture
-the architecture consists of:
-* S3 bucket: to load csv file
-* Lambda function: process files and updates dynamodb
-* DynamoDB: stores account and transaction tables
-* SES: for send email summaries
-
-![architecture drawio (1)](https://github.com/radamanthiss/transaction_api/assets/22681704/271c4b2b-9bba-491a-85b4-c6935795c9a6)
-
 
 # Requirements
 to run this project successfully we need some initial configurations.
@@ -22,54 +13,6 @@ to run this project successfully we need some initial configurations.
 - An aws account
 
 
-# Environment
-in this project we can use any environment library, like pipenv or similar i use miniconda to setup the environment with this command
-- conda create -n transaction_env python=3.9.18
-then for activate this command
-- conda activate transaction_env
-
-then we can run the command pip install -r requirements.txt to install the package
-
-# RUNNING ON LOCAL
-First you need to change the .env file with your variables for smtp 
-```
-SMTP_SERVER='smtp.gmail.com'
-SMTP_PORT='587'
-SMTP_USER='ulkevinb@gmail.com'
-SMTP_PASSWORD='frga vopv ieua eqai'
-DYNAMODB_TRANSACTIONS_TABLE_NAME = 'transactions'
-DYNAMODB_ACCOUNTS_TABLE_NAME = 'accounts'
-SENDER_EMAIL = 'ulkevinb@gmail.com'
-AWS_REGION = 'us-east-1'
-RECIPIENT_EMAIL='put your email'
-```
-
-for testing only change the recipient_email variable and then you can run the lambda_function with this command in the route of src folder
-- cd src
-- python-lambda-local -f lambda_handler -t 5 lambda_function.py ../event.json
-
-this is the stucture of event.json don't change any in the json if you want to test prod locally change the variable running_type: "prod" or remove this line, but for this testing is necessary that you have all the serverless deployment in aws account
-```json
-{
-  "running_type": "local",
-  "Records": [
-    {
-      "s3": {
-        "bucket": {
-          "name": "stori-challenge-transaction-bucket"
-        },
-        "object": {
-          "key": "uploads/stori_challenge_123.csv"
-        }
-      }
-    }
-  ]
-}
-```
-# Description
-this project use two approach one for a prod environment that use serverless architecture when we have lambdas, s3, api gateway, ses and dynamodb
-and for local running, we use the library python-lambda-local and a file named event.json that process the lambda but local
-
 # Architecture
 the architecture consists of:
 * S3 bucket: to load csv file
@@ -78,14 +21,6 @@ the architecture consists of:
 * SES: for send email summaries
 
 ![architecture drawio (1)](https://github.com/radamanthiss/transaction_api/assets/22681704/271c4b2b-9bba-491a-85b4-c6935795c9a6)
-
-
-# Requirements
-to run this project successfully we need some initial configurations.
-- Python 3.9 or above
-- AWS CLI configured with access
-- Terraform
-- An aws account
 
 
 # Environment
@@ -147,8 +82,8 @@ you have to create .env file in the project root with the variables
 Ensure that you have configure aws credentials you can use this command
 - aws configure
 and put the aws credentials like this
-- aws_access_key_id = AKIA6ODUZRWNILSVV6UX
-- aws_secret_access_key = CNaHauFM6LXaoAB0unKrAUqBtbYqj+AfiTA4pkPP
+- aws_access_key_id = "********"
+- aws_secret_access_key = "*********"
 - region=us-east-1
 
 this can change for your aws account crediental that you can configure in this section

@@ -8,8 +8,6 @@
 # @pytest.fixture(scope='function')
 # def aws_credentials():
 #     """Mocked AWS Credentials for moto."""
-#     os.environ['AWS_ACCESS_KEY_ID'] = 'AKIA6ODUZRWNKQOXKXCX'
-#     os.environ['AWS_SECRET_ACCESS_KEY'] = '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'
 
 # @pytest.fixture(scope='function')
 # def dynamodb(aws_credentials):
