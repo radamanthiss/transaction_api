@@ -55,7 +55,7 @@ resource "aws_lambda_function" "process_transactions" {
   runtime          = "python3.9"
   filename         = "../src/lambda_function.zip"
   source_code_hash = filebase64sha256("../src/lambda_function.py")
-  timeout          = 35
+  timeout          = 30
   environment {
     variables = {
       bucket                           = aws_s3_bucket.transaction_bucket.bucket
@@ -75,7 +75,7 @@ resource "aws_lambda_function" "create_account" {
   runtime          = "python3.9"
   source_code_hash = filebase64sha256("../src/lambda_account.py")
   filename         = "../src/lambda_account.zip"
-  timeout          = 35
+  timeout          = 30
   environment {
     variables = {
       DYNAMODB_ACCOUNTS_TABLE_NAME = aws_dynamodb_table.accounts.name
