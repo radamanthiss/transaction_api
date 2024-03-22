@@ -65,8 +65,7 @@ this is the stucture of event.json don't change any in the json if you want to t
     }
   ]
 }
-```# transaction_api
-
+```
 # Description
 this project use two approach one for a prod environment that use serverless architecture when we have lambdas, s3, api gateway, ses and dynamodb
 and for local running, we use the library python-lambda-local and a file named event.json that process the lambda but local
