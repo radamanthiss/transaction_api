@@ -71,6 +71,17 @@ this is the stucture of event.json don't change any in the json if you want to t
 }
 ```
 
+## CSV for testing
+the file has this structure
+```
+Id;AccountId;Date;Transaction
+1;1;jul-23;+60.5
+2;1;jul-23;-10.3
+3;1;ago-23;-20.46
+4;1;ago-23;+10.0
+```
+where the column account id is using when we needed recover the email to send the account summary to the email
+
 ## Set environment variables
 you have to create .env file in the project root with the variables
 * AWS_REGION : us-east-1
