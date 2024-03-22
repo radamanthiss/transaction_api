@@ -55,14 +55,14 @@ resource "aws_lambda_function" "process_transactions" {
   runtime          = "python3.9"
   filename         = "../src/lambda_function.zip"
   source_code_hash = filebase64sha256("../src/lambda_function.py")
-  # filename         = "./lambda/src/lambda_function.zip"
+
   environment {
     variables = {
-      bucket                         = aws_s3_bucket.transaction_bucket.bucket
+      bucket                           = aws_s3_bucket.transaction_bucket.bucket
       DYNAMODB_TRANSACTIONS_TABLE_NAME = aws_dynamodb_table.transactions.name
       DYNAMODB_ACCOUNTS_TABLE_NAME     = aws_dynamodb_table.accounts.name
-      SENDER_EMAIL                   = aws_ses_email_identity.email_identity.email
-      TEMPLATE_PATH                  = "email_template.html"
+      SENDER_EMAIL                     = aws_ses_email_identity.email_identity.email
+      TEMPLATE_PATH                    = "email_template.html"
     }
   }
 }
@@ -160,14 +160,18 @@ resource "aws_iam_policy" "lambda_policy" {
       {
         Action = [
           "dynamodb:PutItem",
-          "dynamodb:Get*",
+          "dynamodb:GetItem",
+          "dynamodb:BatchWriteItem",
           "dynamodb:Update*",
           "dynamodb:Delete*",
           "dynamodb:Scan",
           "dynamodb:Query"
         ],
-        Effect   = "Allow",
-        Resource = aws_dynamodb_table.transactions.arn
+        Effect = "Allow",
+        Resource = [
+          "arn:aws:dynamodb:${var.aws_region}:${var.aws_account_id}:table/accounts",
+          "arn:aws:dynamodb:${var.aws_region}:${var.aws_account_id}:table/transactions"
+        ]
       },
       {
         Action = [
@@ -189,7 +193,7 @@ resource "aws_iam_policy" "lambda_dynamodb_access" {
       {
         Action = [
           "dynamodb:PutItem",
-          "dynamodb:Get*",
+          "dynamodb:GetItem",
           "dynamodb:Update*",
           "dynamodb:Delete*",
           "dynamodb:Scan",
