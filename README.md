@@ -4,11 +4,22 @@
 this project use two approach one for a prod environment that use serverless architecture when we have lambdas, s3, api gateway, ses and dynamodb
 and for local running, we use the library python-lambda-local and a file named event.json that process the lambda but local
 
+# Architecture
+the architecture consists of:
+* S3 bucket: to load csv file
+* Lambda function: process files and updates dynamodb
+* DynamoDB: stores account and transaction tables
+* SES: for send email summaries
+
+![architecture drawio (1)](https://github.com/radamanthiss/transaction_api/assets/22681704/271c4b2b-9bba-491a-85b4-c6935795c9a6)
+
+
 # Requirements
 to run this project successfully we need some initial configurations.
 - Python 3.9 or above
-- AWS CLI
+- AWS CLI configured with access
 - Terraform
+- An aws account
 
 
 # Environment
