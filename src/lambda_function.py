@@ -100,6 +100,7 @@ def lambda_handler(event, context):
     if recipient_email:
       email_manager.send_email(recipient_email,"Your Transaction Summary", html_content)
   
+  
   if running_type == 'prod':
     dynamo_db_manager = DynamoDBManager(os.getenv('DYNAMODB_TRANSACTIONS_TABLE_NAME'))
     dynamo_db_manager.save_transactions(transactions)
